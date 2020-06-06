@@ -2,7 +2,7 @@
 
 *Informações atualizadas sobre COVID-19 que o Governo Federal tenta esconder*
 
-Soon available at [covidometro.info](covidometro.info)
+Soon available at [covidometro.info](http://covidometro.info/)
 
 
 ## Overview
