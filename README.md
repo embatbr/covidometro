@@ -1,6 +1,6 @@
 # covidometro
 
-*Informações sobre COVID-19 que o Governo esconde.*
+*Informações atualizadas sobre COVID-19 que o Governo Federal tenta esconder.*
 
 Soon available at [covidometro.info](http://covidometro.info/)
 
