@@ -5,7 +5,7 @@
 body {
     font-family: Arial;
     padding: 10px;
-    background: #F9F9F9;
+    background: #F1F1F1;
 }
 
 .topnav {
@@ -28,7 +28,7 @@ body {
     padding-right: 50px;
 }
 
-.topnav a {
+/*.topnav a {
     padding: 14px 16px;
     padding-right: 100px;
 }
@@ -36,23 +36,55 @@ body {
 .topnav a:hover {
     background-color: #DDD;
     color: black;
-}
+}*/
 
 .column {
     float: left;
-    padding: 15px;
+    margin-top: 20px;
+    display: table-cell;
+    word-wrap: break-word;
 }
 
-.column.side {
-    width: 25%
+.column.main {
+    /*width: 75%;*/
+    width: 100%;
+    margin-right: 20px;
 }
 
-.column.middle {
-    width: 50%
+.column.secondary {
+    width: 20%;
+    margin-left: 10px;
+}
+
+.column-inside {
+    padding: 20px;
+    background: #FFF;
+}
+
+.column-title {
+    font-size: 125%;
+    font-weight: bold;
 }
 
 .row:after {
     content: "";
     display: table;
     clear: both;
+}
+
+@media screen and (max-width: 800px) {
+    .column.main {
+        width: 100%;
+        margin-right: 0px;
+    }
+
+    .column.secondary {
+        width: 100%;
+        margin-left: 0px;
+    }
+
+/*    .topnav a {
+        float: none;
+        width: 100%;
+    }*/
 }
