@@ -8,13 +8,13 @@ body {
     background: #F1F1F1;
 }
 
-.topnav {
+.nav-info-bar {
     overflow: hidden;
     background-color: #333;
     width: 100%;
 }
 
-.topnav * {
+.nav-info-bar * {
     font-weight: bold;
     float: left;
     display: block;
@@ -23,7 +23,19 @@ body {
     text-decoration: none;
 }
 
-.topnav #page-name {
+.nav-info-bar#topnav {
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+.nav-info-bar#footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+.nav-info-bar .static-info {
     padding: 14px 16px;
     padding-right: 50px;
 }
@@ -40,7 +52,6 @@ body {
 
 .column {
     float: left;
-    margin-top: 20px;
     display: table-cell;
     word-wrap: break-word;
 }
@@ -64,12 +75,22 @@ body {
 .column-title {
     font-size: 125%;
     font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.row {
+    margin-top: 20px;
+}
+
+.pseudo-margin {
+    margin-top: 50px;
 }
 
 .row:after {
     content: "";
     display: table;
     clear: both;
+
 }
 
 @media screen and (max-width: 800px) {
