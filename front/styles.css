@@ -8,6 +8,9 @@ body {
     background-color: #F1F1F1;
 }
 
+
+/*BEGIN Navigation/information bar*/
+
 .nav-info-bar {
     overflow: hidden;
     background-color: #333;
@@ -24,14 +27,16 @@ body {
 }
 
 #topnav {
-    position: fixed;
+    position: absolute;
     top: 0;
+    left: 0;
     right: 0;
 }
 
 #footer {
-    position: fixed;
-    bottom: 0;
+    position: absolute;
+    /*bottom: 0;*/
+    left: 0;
     right: 0;
 }
 
@@ -39,29 +44,36 @@ body {
     padding: 14px 16px;
 }
 
-/*.topnav a {
-    padding: 14px 16px;
-    padding-right: 100px;
+/*END Navigation/information bar*/
+
+
+.pseudo-margin {
+    margin-top: 50px;
 }
 
-.topnav a:hover {
-    background-color: #DDD;
-    color: black;
-}*/
+
+/*BEGIN main content area*/
+
+.main-content:after {
+    content: "";
+    display: table;
+    clear: both;
+
+}
 
 .column {
     float: left;
     display: table-cell;
     word-wrap: break-word;
+    width: 49%;
 }
 
-.column.main {
-    width: 75%;
-    padding-right: 20px;
+.column.left {
+    margin-right: 1%;
 }
 
-.column.secondary {
-    width: 25%;
+.column.right {
+    margin-left: 1%;
 }
 
 .column-inside {
@@ -75,91 +87,15 @@ body {
     margin-bottom: 20px;
 }
 
-.row {
-    margin-top: 20px;
-}
+/*END main content area*/
 
-.pseudo-margin {
-    margin-top: 50px;
-}
-
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-
-}
-
-table {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.table-header {
-    margin-top: 20px;
-}
-
-th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-    padding: 15px;
-}
-
-th {
-    background-color: #333;
-    color: #F9F9F9;
-}
-
-td {
-    font-weight: bold;
-}
-
-td.row-name {
-    text-align: center;
-    color: #333;
-}
-
-td.number-info {
-    text-align: right;
-}
-
-td.number-info:nth-child(2) {
-    background-color: #DADA00;
-}
-
-td.number-info:nth-child(3) {
-    background-color: #00AF00;
-}
-
-td.number-info:nth-child(4) {
-    background-color: #DD0000;
-    color: #F9F9F9;
-}
 
 @media screen and (max-width: 800px) {
-    .column.main {
+    .column {
         width: 100%;
-        padding-right: 0px;
     }
 
-    .column.secondary {
-        width: 100%;
-        margin-top: 20px;
+    .column.middle {
+        margin: 15px 0;
     }
-
-    table {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    th, td {
-        padding: 5px;
-    }
-
-/*    .topnav a {
-        float: none;
-        width: 100%;
-    }*/
 }
