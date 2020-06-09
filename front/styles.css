@@ -23,13 +23,13 @@ body {
     text-decoration: none;
 }
 
-.nav-info-bar#topnav {
+#topnav {
     position: fixed;
     top: 0;
     right: 0;
 }
 
-.nav-info-bar#footer {
+#footer {
     position: fixed;
     bottom: 0;
     right: 0;
@@ -37,7 +37,6 @@ body {
 
 .nav-info-bar .static-info {
     padding: 14px 16px;
-    padding-right: 50px;
 }
 
 /*.topnav a {
