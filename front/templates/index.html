@@ -44,7 +44,7 @@
                         {%- for tup in zip(header, row) %}
                             <div class="table_small">
                                 <div class="table_cell">{{ tup[0] }}</div>
-                            {% if tup[0] in ('Novos Casos', 'Novos Óbitos') %}
+                            {% if tup[0] in ('Novos Casos', 'Novos Óbitos') and tup[1] > 0 %}
                                 <div class="table_cell">+{{ tup[1] }}</div>
                             {% else %}
                                 <div class="table_cell">{{ tup[1] }}</div>
@@ -82,7 +82,7 @@
         <div class="pseudo-margin bottom"></div>
 
         <div id="footer" class="nav-info-bar">
-            <div id="website-version" class="static-info">v0.3.0</div>
+            <div id="website-version" class="static-info">v{{ version }}</div>
             <div id="contact-email" class="static-info">covidometro.info@gmail.com</div>
         </div>
     </body>

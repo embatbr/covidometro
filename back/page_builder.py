@@ -6,8 +6,11 @@ from jinja2 import Environment, PackageLoader, select_autoescape
 
 
 DATA_DIR = 'data'
-TEMPLATES_DIR = '../front/templates'
-PUBLIC_DIR = '../front/public'
+
+FRONT_DIR = '../front'
+TEMPLATES_DIR = '{}/templates'.format(FRONT_DIR)
+PUBLIC_DIR = '{}/public'.format(FRONT_DIR)
+
 
 FILENAMES = [
     'index.html', 'styles.css', 'table-styles.css'
@@ -19,7 +22,8 @@ RENDER_KWARGS_BY_FILENAME = {
             'Estado', 'Casos Totais', 'Casos Suspeitos', 'Curados', 'Óbitos',
             'Testes', 'Novos Casos', 'Novos Óbitos'
         ],
-        'rows': json.load(open('{}/2020-06-10.json'.format(DATA_DIR)))
+        'rows': json.load(open('{}/2020-06-10.json'.format(DATA_DIR))),
+        'version': open('{}/version'.format(FRONT_DIR)).read()
     },
     'styles.css': {},
     'table-styles.css': {}

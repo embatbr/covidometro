@@ -47,8 +47,12 @@ body {
 /*END Navigation/information bar*/
 
 
-.pseudo-margin {
+.pseudo-margin.top {
     margin-top: 50px;
+}
+
+.pseudo-margin.bottom {
+    margin-top: 20px;
 }
 
 
@@ -103,9 +107,5 @@ body {
     .column.right {
         margin: 0;
         margin-top: 5px;
-    }
-
-    .pseudo-margin.bottom {
-        margin-top: 20px;
     }
 }
