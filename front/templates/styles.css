@@ -95,7 +95,17 @@ body {
         width: 100%;
     }
 
-    .column.middle {
-        margin: 15px 0;
+    .column.left {
+        margin: 0;
+        margin-bottom: 5px;
+    }
+
+    .column.right {
+        margin: 0;
+        margin-top: 5px;
+    }
+
+    .pseudo-margin.bottom {
+        margin-top: 20px;
     }
 }
