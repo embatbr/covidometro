@@ -45,9 +45,9 @@
                             <div class="table_small">
                                 <div class="table_cell">{{ tup[0] }}</div>
                             {% if tup[0] in ('Novos Casos', 'Novos Óbitos') and tup[1] > 0 %}
-                                <div class="table_cell">+{{ tup[1] }}</div>
+                                <div class="table_cell data-number">+{{ tup[1] }}</div>
                             {% else %}
-                                <div class="table_cell">{{ tup[1] }}</div>
+                                <div class="table_cell data-number">{{ tup[1] }}</div>
                             {% endif %}
                             </div>
                         {%- endfor %}
