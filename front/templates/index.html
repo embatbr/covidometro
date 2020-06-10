@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Covidômetro - Atualizações sobre COVID-19</title>
+
+        <meta name=”robots” content=”index,follow”>
+        <meta charset="utf-8">
+        <meta name="description" content="Informações atualizadas sobre COVID-19 no Brasil, mesmo com as tentativas do Governo Federal (administração Bolsonaro) tenta esconder e maquiar.">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+        <link rel="canonical" href="http://covidometro.info/" />
+
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="table-styles.css">
+    </head>
+    <body>
+        <div id="topnav" class="nav-info-bar">
+            <div id="page-name" class="static-info">COVIDÔMETRO </div>
+
+            <!-- <a href="#">Link</a>
+            <a href="#">Link</a>
+            <a href="#">Link</a> -->
+        </div>
+
+        <div class="pseudo-margin"></div>
+
+        <div class="main-content">
+            <div class="column left">
+                <div class="column-inside">
+                    <div class="column-title">
+                        Números
+                    </div>
+
+                    <div class="table">
+                        <div class="theader">
+                        {%- for header_cell in header %}
+                            <div class="table_header">{{ header_cell }}</div>
+                        {%- endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column right">
+                <div class="column-inside">
+                    <div class="column-title">
+                        Links confiáveis
+                    </div>
+
+                    <ul>
+                        <li>
+                            <a href="http://www.dadostransparentes.com.br" target="_blank" rel="noopener noreferrer">http://www.dadostransparentes.com.br</a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/wcota/covid19br" target="_blank" rel="noopener noreferrer">https://github.com/wcota/covid19br</a>
+                        </li>
+                        <li>
+                            <a href="https://www.worldometers.info/coronavirus/" target="_blank" rel="noopener noreferrer">https://www.worldometers.info/coronavirus/</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="pseudo-margin"></div>
+
+        <div id="footer" class="nav-info-bar">
+            <div id="website-version" class="static-info">v0.3.0</div>
+            <div id="contact-email" class="static-info">covidometro.info@gmail.com</div>
+        </div>
+    </body>
+</html>
