@@ -37,6 +37,23 @@
                             <div class="table_header">{{ header_cell }}</div>
                         {%- endfor %}
                         </div>
+
+                    {%- for row in rows %}
+
+                        <div class="table_row">
+                        {%- for tup in zip(header, row) %}
+                            <div class="table_small">
+                                <div class="table_cell">{{ tup[0] }}</div>
+                            {% if tup[0] in ('Novos Casos', 'Novos Óbitos') %}
+                                <div class="table_cell">+{{ tup[1] }}</div>
+                            {% else %}
+                                <div class="table_cell">{{ tup[1] }}</div>
+                            {% endif %}
+                            </div>
+                        {%- endfor %}
+                        </div>
+
+                    {%- endfor %}
                     </div>
                 </div>
             </div>

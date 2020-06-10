@@ -60,6 +60,10 @@
     border: #CCC 1px solid;
 }
 
+.table_row > .table_small > .table_cell {
+    background-color: #F9F9F9;
+}
+
 .table_row > .table_small:first-child > .table_cell {
     background-color: #D5D5D5;
 }
@@ -69,16 +73,18 @@
 }
 
 .table_row > .table_small:nth-child(4) > .table_cell {
-    background-color: #00AF00;
+    background-color: #009900;
+    color: #F9F9F9;
 }
 
 .table_row > .table_small:nth-child(5) > .table_cell {
-    background-color: #DD0000;
+    background-color: #BB0000;
     color: #F9F9F9;
 }
 
 .table_row > .table_small:nth-child(n+7):nth-child(-n+8) > .table_cell {
     font-style: italic;
+    /*color: #DD0000;*/
 }
 
 .table_row:last-child > .table_small:last-child > .table_cell:last-child {
