@@ -96,11 +96,11 @@
         background-color: #FFF;
     }
 
-    .table_row > .table_small:nth-child(odd) > .table_cell:nth-child(n+2).data-number {
+    .table_row > .table_small:nth-child(2n+3) > .table_cell:nth-child(n+2).data-number {
         background-color: #E9E9E9;
     }
 
-    .table_row > .table_small:first-child > .table_cell {
+    .table_row > .table_small:first-child > .table_cell:nth-child(2) {
         background-color: #D5D5D5;
     }
 
@@ -141,12 +141,12 @@
     }
 
     .table_row > .table_small:first-child > .table_cell:first-child {
-        border-top-left-radius: 5px;
+        border-top-left-radius: 3px;
         border-top: #333 1px solid;
     }
 
     .table_row > .table_small:first-child > .table_cell:last-child {
-        border-top-right-radius: 5px;
+        border-top-right-radius: 3px;
         border-top: #CCC 1px solid;
     }
 
@@ -159,10 +159,10 @@
     }
 
     .table_row > .table_small:last-child > .table_cell:first-child {
-        border-bottom-left-radius: 5px;
+        border-bottom-left-radius: 3px;
     }
 
     .table_row > .table_small:last-child > .table_cell:last-child {
-        border-bottom-right-radius: 5px;
+        border-bottom-right-radius: 3px;
     }
 }
