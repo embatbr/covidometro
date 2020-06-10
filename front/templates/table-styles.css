@@ -100,7 +100,7 @@
 /*END row*/
 
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 750px) {
     .table {
         display: block;
     }
