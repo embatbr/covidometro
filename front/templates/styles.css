@@ -5,7 +5,7 @@
 body {
     font-family: Arial;
     padding: 10px;
-    background-color: #F1F1F1;
+    background-color: #5A5A5A;
 }
 
 
@@ -35,7 +35,6 @@ body {
 
 #footer {
     position: absolute;
-    /*bottom: 0;*/
     left: 0;
     right: 0;
 }
@@ -73,11 +72,11 @@ body {
 }
 
 .column.left {
-    margin-right: 1%;
+    margin-right: 10px;
 }
 
 .column.right {
-    margin-left: 1%;
+    margin-left: 10px;
 }
 
 .column-inside {
