@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-# import json
 import csv
+import sys
 
 from jinja2 import Environment, PackageLoader, select_autoescape
 
@@ -17,13 +17,31 @@ FILENAMES = [
     'index.html', 'styles.css', 'table-styles.css'
 ]
 
-reader = csv.DictReader(open('{}/2020-06-10.csv'.format(DATA_DIR)))
+
+def treat_row(row):
+    treated_row = dict()
+
+    for (key, value) in row.items():
+        treated_value = value.strip()
+        if (key != 'Estado') and (not treated_value.isdigit()):
+            treated_value = '-'
+
+        treated_row[key] = treated_value
+
+    return treated_row
+
+
+today = sys.argv[1]
+
+reader = csv.DictReader(open('{}/{}.csv'.format(DATA_DIR, today)))
 
 RENDER_KWARGS_BY_FILENAME = {
     'index.html': {
-        # 'header': reader.fieldnames,
-        'header': ['Estado', 'Total de Casos', 'Óbitos', 'Curados', 'Suspeitos', 'Testes','Novos Casos','Novos Óbitos'],
-        'rows': [row for row in reader],
+        'header': [
+            'Estado', 'Total de Casos', 'Óbitos', 'Curados', 'Suspeitos', 'Testes',
+            'Novos Casos','Novos Óbitos'
+        ],
+        'rows': [treat_row(row) for row in reader],
         'version': open('{}/version'.format(FRONT_DIR)).read()
     },
     'styles.css': {},

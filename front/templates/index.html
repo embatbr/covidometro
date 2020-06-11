@@ -27,11 +27,8 @@
             }
 
 
-            // GH Issue #3
             const merge_cells = function(transforms) {
                 const cells = document.getElementsByClassName('table_row');
-                // console.log(cells.length);
-                // console.log(cells);
 
                 var elements_to_remove = [];
 
@@ -50,8 +47,10 @@
                             const receiver_content = receiver.innerHTML;
                             const sender_content = sender.innerHTML;
 
-                            const new_receiver_content = receiver_content + ' (+' + sender_content + ')';
-                            receiver.innerHTML = new_receiver_content;
+                            if(sender_content !== '-') {
+                                const new_receiver_content = receiver_content + ' (+' + sender_content + ')';
+                                receiver.innerHTML = new_receiver_content;
+                            }
                         }
 
                         elements_to_remove.push(sender.parentElement);
