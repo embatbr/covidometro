@@ -14,20 +14,72 @@
         <link rel="stylesheet" href="table-styles.css">
 
         <script type="text/javascript">
-            document.addEventListener('DOMContentLoaded', function() {
-                var cells = document.getElementsByClassName("data-number");
+            const format_cells = function() {
+                const cells = document.getElementsByClassName("data-number");
 
                 for(var i = 0; i < cells.length; i++) {
-                    var cur_value = cells[i].innerHTML;
-                    var new_value = Number(cur_value).toLocaleString('pt-br');
-                    cells[i].innerHTML = new_value;
+                    const cur_value = cells[i].innerHTML;
+                    if(/^\d+$/.test(cur_value)) {
+                        var new_value = Number(cur_value).toLocaleString('pt-br');
+                        cells[i].innerHTML = new_value;
+                    }
                 }
-            }, false);
+            }
+
+
+            // GH Issue #3
+            const merge_cells = function(transforms) {
+                const cells = document.getElementsByClassName('table_row');
+                // console.log(cells.length);
+                // console.log(cells);
+
+                var elements_to_remove = [];
+
+                for(var i = 0; i < cells.length; i++) {
+                    const cur_table_row = cells[i].getElementsByClassName('table_small');
+
+                    for(var j = 0; j < transforms.length; j++) {
+                        const transform = transforms[j];
+                        const receiver_index = transform[0];
+                        const sender_index = transform[1];
+
+                        var receiver = cur_table_row[receiver_index].getElementsByClassName('data-number')[0];
+                        var sender = cur_table_row[sender_index].getElementsByClassName('data-number')[0];
+
+                        if((receiver !== undefined) && (sender !== undefined)) {
+                            const receiver_content = receiver.innerHTML;
+                            const sender_content = sender.innerHTML;
+
+                            const new_receiver_content = receiver_content + ' (+' + sender_content + ')';
+                            receiver.innerHTML = new_receiver_content;
+                        }
+
+                        elements_to_remove.push(sender.parentElement);
+                    }
+                }
+
+                for(var i = 0; i < elements_to_remove.length; i++) {
+                    const element = elements_to_remove[i];
+                    element.remove();
+                }
+            }
+
+
+            var post_load = function() {
+                format_cells();
+                merge_cells([
+                    [1, 6],
+                    [2, 7]
+                ]);
+            }
+
+
+            document.addEventListener('DOMContentLoaded', post_load, false);
         </script>
     </head>
     <body>
         <div id="topnav" class="nav-info-bar">
-            <div id="page-name" class="static-info">COVIDÔMETRO </div>
+            <div id="page-name" class="static-info">COVIDÔMETRO</div>
 
             <!-- <a href="#">Link</a>
             <a href="#">Link</a>
@@ -40,7 +92,7 @@
             <div class="column left">
                 <div class="column-inside">
                     <div class="column-title">
-                        Números
+                        COVID-19 HOJE
                     </div>
 
                     <div class="table">
@@ -52,36 +104,26 @@
                         {%- for header_cell in header[1:] %}
                             <div class="table_small">
                                 <div class="table_cell">{{ header_cell }}</div>
-                            {%- if rows[0][header_cell].isdigit() %}
                                 <div class="table_cell data-number">{{ rows[0][header_cell] }}</div>
-                            {%- else %}
-                                <div class="table_cell">{{ rows[0][header_cell] }}</div>
-                            {%- endif %}
                             </div>
                         {%- endfor %}
                         </div>
 
                         <div class="theader">
-                        {%- for header_cell in header %}
+                        {%- for header_cell in header[0 : -2] %}
                             <div class="table_header">{{ header_cell }}</div>
                         {%- endfor %}
                         </div>
 
                     {%- for row in rows[1:] %}
-
                         <div class="table_row">
                         {%- for header_cell in header %}
                             <div class="table_small">
                                 <div class="table_cell">{{ header_cell }}</div>
-                            {%- if row[header_cell].isdigit() %}
                                 <div class="table_cell data-number">{{ row[header_cell] }}</div>
-                            {%- else %}
-                                <div class="table_cell">{{ row[header_cell] }}</div>
-                            {%- endif %}
                             </div>
                         {%- endfor %}
                         </div>
-
                     {%- endfor %}
                     </div>
                     <div id="fonte"><a href="https://docs.google.com/spreadsheets/d/1MWQE3s4ef6dxJosyqvsFaV4fDyElxnBUB6gMGvs3rEc/edit#gid=1503196283" target="_blank">Fonte</a></div>
@@ -91,7 +133,7 @@
             <div class="column right">
                 <div class="column-inside">
                     <div id="links-confiaveis" class="column-title">
-                        Links confiáveis
+                        LINKS CONFIÁVEIS
                     </div>
 
                     <ul>

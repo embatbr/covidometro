@@ -21,7 +21,8 @@ reader = csv.DictReader(open('{}/2020-06-10.csv'.format(DATA_DIR)))
 
 RENDER_KWARGS_BY_FILENAME = {
     'index.html': {
-        'header': reader.fieldnames,
+        # 'header': reader.fieldnames,
+        'header': ['Estado', 'Total de Casos', 'Óbitos', 'Curados', 'Suspeitos', 'Testes','Novos Casos','Novos Óbitos'],
         'rows': [row for row in reader],
         'version': open('{}/version'.format(FRONT_DIR)).read()
     },
