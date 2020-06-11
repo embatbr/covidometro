@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import json
+# import json
+import csv
 
 from jinja2 import Environment, PackageLoader, select_autoescape
 
@@ -16,13 +17,12 @@ FILENAMES = [
     'index.html', 'styles.css', 'table-styles.css'
 ]
 
+reader = csv.DictReader(open('{}/2020-06-10.csv'.format(DATA_DIR)))
+
 RENDER_KWARGS_BY_FILENAME = {
     'index.html': {
-        'header': [
-            'Estado', 'Casos Totais', 'Casos Suspeitos', 'Curados', 'Óbitos',
-            'Testes', 'Novos Casos', 'Novos Óbitos'
-        ],
-        'rows': json.load(open('{}/2020-06-10.json'.format(DATA_DIR))),
+        'header': reader.fieldnames,
+        'rows': [row for row in reader],
         'version': open('{}/version'.format(FRONT_DIR)).read()
     },
     'styles.css': {},
@@ -34,7 +34,10 @@ env = Environment(
     loader=PackageLoader('page_builder', TEMPLATES_DIR),
     autoescape=select_autoescape(['html', 'css'])
 )
-env.globals.update(zip=zip)
+env.globals.update(
+    isinstance=isinstance,
+    int=int
+)
 
 
 def build_public(filename, render_kwargs):
@@ -49,3 +52,5 @@ if __name__ == '__main__':
     for filename in FILENAMES:
         render_kwargs = RENDER_KWARGS_BY_FILENAME[filename]
         build_public(filename, render_kwargs)
+
+    # print(RENDER_KWARGS_BY_FILENAME['index.html'])

@@ -41,13 +41,13 @@
                     {%- for row in rows %}
 
                         <div class="table_row">
-                        {%- for tup in zip(header, row) %}
+                        {%- for header_cell in header %}
                             <div class="table_small">
-                                <div class="table_cell">{{ tup[0] }}</div>
-                            {% if tup[0] in ('Novos Casos', 'Novos Óbitos') and tup[1] > 0 %}
-                                <div class="table_cell data-number">+{{ tup[1] }}</div>
+                                <div class="table_cell">{{ header_cell }}</div>
+                            {% if header_cell in ('Novos Casos', 'Novos Óbitos') and isinstance(row[header_cell], int) and row[header_cell] > 0 %}
+                                <div class="table_cell data-number">+{{ row[header_cell] }}</div>
                             {% else %}
-                                <div class="table_cell data-number">{{ tup[1] }}</div>
+                                <div class="table_cell data-number">{{ row[header_cell] }}</div>
                             {% endif %}
                             </div>
                         {%- endfor %}
