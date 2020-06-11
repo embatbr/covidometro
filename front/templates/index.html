@@ -44,11 +44,11 @@
                         {%- for header_cell in header %}
                             <div class="table_small">
                                 <div class="table_cell">{{ header_cell }}</div>
-                            {% if header_cell in ('Novos Casos', 'Novos Óbitos') and isinstance(row[header_cell], int) and row[header_cell] > 0 %}
-                                <div class="table_cell data-number">+{{ row[header_cell] }}</div>
-                            {% else %}
+                            {%- if row[header_cell].isdigit() %}
                                 <div class="table_cell data-number">{{ row[header_cell] }}</div>
-                            {% endif %}
+                            {%- else %}
+                                <div class="table_cell">{{ row[header_cell] }}</div>
+                            {%- endif %}
                             </div>
                         {%- endfor %}
                         </div>
@@ -89,5 +89,15 @@
             <div id="website-version" class="static-info">v{{ version }}</div>
             <div id="contact-email" class="static-info">covidometro.info@gmail.com</div>
         </div>
+
+        <script type="text/javascript">
+            var cells = document.getElementsByClassName("data-number");
+
+            for(var i = 0; i < cells.length; i++) {
+                var cur_value = cells[i].innerHTML;
+                var new_value = Number(cur_value).toLocaleString('pt-br');
+                cells[i].innerHTML = new_value;
+            }
+        </script>
     </body>
 </html>

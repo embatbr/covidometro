@@ -50,7 +50,7 @@
 }
 
 .table_row > .table_small > .table_cell:nth-child(odd) {
-    display: none;
+    display: none; /* hides the header elements present in each row (when in desktop view) */
     background-color: #333;
     color: #F1F1F1;
     padding-top: 10px;
@@ -68,7 +68,7 @@
     background-color: #FFF;
 }
 
-.table_row > .table_small:first-child > .table_cell {
+.table_row > .table_small:first-child > .table_cell:nth-child(even) {
     background-color: #D5D5D5;
 }
 

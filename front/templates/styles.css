@@ -72,11 +72,15 @@ body {
 }
 
 .column.left {
-    margin-right: 10px;
+    /*margin-right: 10px;*/
+    margin-right: 0.5%;
+    width: 69.5%;
 }
 
 .column.right {
-    margin-left: 10px;
+    /*margin-left: 10px;*/
+    margin-left: 0.5%;
+    width: 29.5%;
 }
 
 .column-inside {
@@ -102,16 +106,18 @@ body {
 
 
 @media screen and (max-width: 1400px) {
-    .column {
+    /*.column {
         width: 100%;
-    }
+    }*/
 
     .column.left {
+        width: 100%;
         margin: 0;
         margin-bottom: 5px;
     }
 
     .column.right {
+        width: 100%;
         margin: 0;
         margin-top: 5px;
     }

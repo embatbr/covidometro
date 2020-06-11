@@ -52,5 +52,3 @@ if __name__ == '__main__':
     for filename in FILENAMES:
         render_kwargs = RENDER_KWARGS_BY_FILENAME[filename]
         build_public(filename, render_kwargs)
-
-    # print(RENDER_KWARGS_BY_FILENAME['index.html'])
