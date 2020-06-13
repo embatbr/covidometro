@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import csv
+import os
 import sys
 
 from jinja2 import Environment, PackageLoader, select_autoescape
@@ -14,7 +15,11 @@ PUBLIC_DIR = '{}/public'.format(FRONT_DIR)
 
 
 FILENAMES = [
-    'index.html', 'styles.css', 'table-styles.css'
+    'index.html',
+    'styles/general.css',
+    'styles/table.css',
+    'styles/interaction.css',
+    'js/table.js'
 ]
 
 
@@ -43,9 +48,7 @@ RENDER_KWARGS_BY_FILENAME = {
         ],
         'rows': [treat_row(row) for row in reader],
         'version': open('{}/version'.format(FRONT_DIR)).read()
-    },
-    'styles.css': {},
-    'table-styles.css': {}
+    }
 }
 
 
@@ -69,5 +72,12 @@ def build_public(filename, render_kwargs):
 
 if __name__ == '__main__':
     for filename in FILENAMES:
-        render_kwargs = RENDER_KWARGS_BY_FILENAME[filename]
+        splitted = filename.rsplit('/', 1)
+        parent_dirpath = PUBLIC_DIR
+        if len(splitted) > 1:
+            parent_dirpath = '{}/{}'.format(PUBLIC_DIR, splitted[0])
+        if not os.path.exists(parent_dirpath):
+            os.makedirs(parent_dirpath)
+
+        render_kwargs = RENDER_KWARGS_BY_FILENAME.get(filename, dict())
         build_public(filename, render_kwargs)
