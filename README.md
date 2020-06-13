@@ -18,6 +18,7 @@ Current government behavior suggest we are going to suffer a coup d'état. While
 
 - https://codepen.io/amwill04/pen/QNPpqx
 - https://medium.com/hackernoon/hosting-a-free-static-website-on-google-cloud-storage-d0d83704173b
+- https://medium.com/@vince.shields913/reading-google-sheets-into-a-pandas-dataframe-with-gspread-and-oauth2-375b932be7bf
 
 
 ## References and sources
