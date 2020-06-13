@@ -1,3 +1,8 @@
+/*
+Styles for general functionalities.
+*/
+
+
 * {
     box-sizing: border-box;
 }
@@ -68,17 +73,15 @@ body {
     float: left;
     display: table-cell;
     word-wrap: break-word;
-    width: 49%;
+    /*width: 49%;*/
 }
 
 .column.left {
-    /*margin-right: 10px;*/
     margin-right: 0.5%;
     width: 69.5%;
 }
 
 .column.right {
-    /*margin-left: 10px;*/
     margin-left: 0.5%;
     width: 29.5%;
 }
@@ -105,11 +108,7 @@ body {
 /*END main content area*/
 
 
-@media screen and (max-width: 1400px) {
-    /*.column {
-        width: 100%;
-    }*/
-
+@media screen and (max-width: 1050px) {
     .column.left {
         width: 100%;
         margin: 0;
