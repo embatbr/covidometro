@@ -7,8 +7,6 @@ import gspread
 import pandas as pd
 
 
-DATA_DIR = 'data'
-
 SCOPE = [
     'https://spreadsheets.google.com/feeds',
     'https://www.googleapis.com/auth/drive'
@@ -34,7 +32,7 @@ def read_values(gsheet_key, credentials):
     sheet = client.open_by_key(gsheet_key)
     worksheet = sheet.sheet1
 
-    cells = worksheet.range('B3:I31')
+    cells = worksheet.range('B4:I31')
     values = list()
     cur_index = -1
     count = 0
@@ -54,15 +52,13 @@ def read_values(gsheet_key, credentials):
 
 def read_values_as_dataframe(gsheet_key, credentials):
     data = read_values(gsheet_key, credentials)
-    data.pop(0) # popping header
-
     data[0][0] = 'BRASIL'
 
     return pd.DataFrame(data, columns=DEFAULT_HEADER)
 
 
 def generate_data_file(filename):
-    filepath = '{}/{}.csv'.format(DATA_DIR, filename)
+    filepath = '{}.csv'.format(filename)
 
     dataframe = read_values_as_dataframe(SOURCE_GSHEETS_KEY, DEFAULT_CREDENTIALS)
     dataframe.to_csv(filepath, index=False)

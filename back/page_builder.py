@@ -7,8 +7,6 @@ import sys
 from jinja2 import Environment, PackageLoader, select_autoescape
 
 
-DATA_DIR = 'data'
-
 FRONT_DIR = '../front'
 TEMPLATES_DIR = '{}/templates'.format(FRONT_DIR)
 PUBLIC_DIR = '{}/public'.format(FRONT_DIR)
@@ -38,7 +36,7 @@ def treat_row(row):
 
 today = sys.argv[1]
 
-reader = csv.DictReader(open('{}/{}.csv'.format(DATA_DIR, today)))
+reader = csv.DictReader(open('{}.csv'.format(today)))
 
 RENDER_KWARGS_BY_FILENAME = {
     'index.html': {
