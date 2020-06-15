@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import sys
-
 from oauth2client.service_account import ServiceAccountCredentials
 import gspread
 import pandas as pd
@@ -19,11 +17,11 @@ DEFAULT_CREDENTIALS = ServiceAccountCredentials.from_json_keyfile_name(
 
 SOURCE_GSHEETS_KEY = '1MWQE3s4ef6dxJosyqvsFaV4fDyElxnBUB6gMGvs3rEc'
 
-NUM_COLUMNS = 8
 DEFAULT_HEADER = [
     'Estado', 'Total de Casos', 'Suspeitos', 'Curados', 'Óbitos', 'Testes',
     'Novos Casos','Novos Óbitos'
 ]
+NUM_COLUMNS = len(DEFAULT_HEADER)
 
 
 def read_values(gsheet_key, credentials):
@@ -57,13 +55,12 @@ def read_values_as_dataframe(gsheet_key, credentials):
     return pd.DataFrame(data, columns=DEFAULT_HEADER)
 
 
-def generate_data_file(filename):
+def generate_data_file(gsheet_key, credentials, filename):
     filepath = '{}.csv'.format(filename)
 
-    dataframe = read_values_as_dataframe(SOURCE_GSHEETS_KEY, DEFAULT_CREDENTIALS)
+    dataframe = read_values_as_dataframe(gsheet_key, credentials)
     dataframe.to_csv(filepath, index=False)
 
 
 if __name__ == '__main__':
-    filename = sys.argv[1]
-    generate_data_file(filename)
+    generate_data_file(SOURCE_GSHEETS_KEY, DEFAULT_CREDENTIALS, 'data')
