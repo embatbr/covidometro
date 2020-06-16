@@ -34,7 +34,12 @@ const _merge_cells = function(transforms) {
 
             if((receiver !== undefined) && (sender !== undefined)) {
                 const receiver_content = receiver.innerHTML;
-                const sender_content = sender.innerHTML;
+                var sender_content = sender.innerHTML;
+
+                // gambi para a row total não ficar com (+0) no receiver
+                if(sender_content == 0) {
+                    sender_content = '-'
+                }
 
                 if(sender_content !== '-') {
                     const new_receiver_content = receiver_content + ' (+' + sender_content + ')';
